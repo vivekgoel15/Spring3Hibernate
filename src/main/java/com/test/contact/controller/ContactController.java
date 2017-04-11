@@ -2,11 +2,15 @@ package com.test.contact.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.test.contact.form.Contact;
 import com.test.contact.service.ContactService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +23,11 @@ public class ContactController {
 	@Autowired
 	private ContactService contactService;
 
+	@RequestMapping("/")
+	public String homepage(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+		return "redirect:/index";
+	}
+	
 	@RequestMapping("/index")
 	public String listContacts(Map<String, Object> map) {
 
